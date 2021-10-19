@@ -2,9 +2,11 @@ package lead
 
 import (
 	"encoding/json"
-	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api"
-	"github.com/ozonmp/omp-bot/internal/app/path"
 	"log"
+
+	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api"
+
+	"github.com/ozonmp/omp-bot/internal/app/path"
 )
 
 func (c *WorkLeadCommander) List(inputMessage *tgbotapi.Message) {

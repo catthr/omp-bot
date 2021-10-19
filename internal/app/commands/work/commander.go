@@ -1,10 +1,11 @@
 package work
 
 import (
-	"github.com/ozonmp/omp-bot/internal/app/commands/work/lead"
 	"log"
 
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api"
+
+	"github.com/ozonmp/omp-bot/internal/app/commands/work/lead"
 	"github.com/ozonmp/omp-bot/internal/app/path"
 )
 
