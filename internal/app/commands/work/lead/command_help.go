@@ -5,7 +5,7 @@ import (
 	"log"
 )
 
-func (c *LeadCommander) Help(inputMessage *tgbotapi.Message) {
+func (c *WorkLeadCommander) Help(inputMessage *tgbotapi.Message) {
 	msg := tgbotapi.NewMessage(inputMessage.Chat.ID,
 		"/help__work__lead - help\n"+
 			"/get__work__lead - get a lead\n"+
@@ -32,6 +32,6 @@ func (c *LeadCommander) Help(inputMessage *tgbotapi.Message) {
 
 	_, err := c.bot.Send(msg)
 	if err != nil {
-		log.Printf("Work.LeadCommander.Help: error sending reply message to chat - %v", err)
+		log.Printf("WorkLeadCommander.Help: error sending reply message to chat - %v", err)
 	}
 }

@@ -12,11 +12,11 @@ type callbackListData struct {
 	Offset uint64 `json:"offset"`
 }
 
-func (c *LeadCommander) CallbackList(callback *tgbotapi.CallbackQuery, callbackPath path.CallbackPath) {
+func (c *WorkLeadCommander) CallbackList(callback *tgbotapi.CallbackQuery, callbackPath path.CallbackPath) {
 	parsedData := callbackListData{}
 	err := json.Unmarshal([]byte(callbackPath.CallbackData), &parsedData)
 	if err != nil {
-		log.Printf("Work.LeadCommander.CallbackList: "+
+		log.Printf("WorkLeadCommander.CallbackList: "+
 			"error reading json data for type callbackListData from "+
 			"input string %v - %v", callbackPath.CallbackData, err)
 		return

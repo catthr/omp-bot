@@ -7,7 +7,7 @@ import (
 	"log"
 )
 
-func (c *LeadCommander) List(inputMessage *tgbotapi.Message) {
+func (c *WorkLeadCommander) List(inputMessage *tgbotapi.Message) {
 	items, _ := c.leadService.List(0, defaultListLimit)
 	c.sendListMsg(inputMessage.Chat.ID, paginatedList{
 		Items:  items,
@@ -16,7 +16,7 @@ func (c *LeadCommander) List(inputMessage *tgbotapi.Message) {
 	})
 }
 
-func (c *LeadCommander) sendListMsg(chatID int64, leads paginatedList) {
+func (c *WorkLeadCommander) sendListMsg(chatID int64, leads paginatedList) {
 	outputMsgText := "Here are the leads: \n\n"
 
 	for _, p := range leads.Items {
@@ -69,6 +69,6 @@ func (c *LeadCommander) sendListMsg(chatID int64, leads paginatedList) {
 
 	_, err := c.bot.Send(msg)
 	if err != nil {
-		log.Printf("Work.LeadCommander.sendListMsg: error sending reply message to chat - %v", err)
+		log.Printf("WorkLeadCommander.sendListMsg: error sending reply message to chat - %v", err)
 	}
 }

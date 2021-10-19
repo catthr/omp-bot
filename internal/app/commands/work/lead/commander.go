@@ -18,21 +18,21 @@ type LeadService interface {
 	Remove(leadID uint64) (bool, error)
 }
 
-type LeadCommander struct {
+type WorkLeadCommander struct {
 	bot         *tgbotapi.BotAPI
 	leadService LeadService
 }
 
-func NewLeadCommander(bot *tgbotapi.BotAPI) *LeadCommander {
+func NewWorkLeadCommander(bot *tgbotapi.BotAPI) *WorkLeadCommander {
 	ls := lead.NewDummyLeadService()
 
-	return &LeadCommander{
+	return &WorkLeadCommander{
 		bot:         bot,
 		leadService: ls,
 	}
 }
 
-func (c *LeadCommander) HandleCallback(callback *tgbotapi.CallbackQuery, callbackPath path.CallbackPath) {
+func (c *WorkLeadCommander) HandleCallback(callback *tgbotapi.CallbackQuery, callbackPath path.CallbackPath) {
 	switch callbackPath.CallbackName {
 	case "list":
 		c.CallbackList(callback, callbackPath)
@@ -41,7 +41,7 @@ func (c *LeadCommander) HandleCallback(callback *tgbotapi.CallbackQuery, callbac
 	}
 }
 
-func (c *LeadCommander) HandleCommand(msg *tgbotapi.Message, commandPath path.CommandPath) {
+func (c *WorkLeadCommander) HandleCommand(msg *tgbotapi.Message, commandPath path.CommandPath) {
 	switch commandPath.CommandName {
 	case "help":
 		c.Help(msg)
@@ -60,7 +60,7 @@ func (c *LeadCommander) HandleCommand(msg *tgbotapi.Message, commandPath path.Co
 	}
 }
 
-func (c *LeadCommander) sendMsg(chatID int64, msg string) {
+func (c *WorkLeadCommander) sendMsg(chatID int64, msg string) {
 	m := tgbotapi.NewMessage(chatID, msg)
 	_, err := c.bot.Send(m)
 	if err != nil {

@@ -18,11 +18,11 @@ func (d *createInputData) valid() bool {
 	return d.FirstName != nil && d.LastName != nil && d.Project != nil
 }
 
-func (c *LeadCommander) New(inputMessage *tgbotapi.Message) {
+func (c *WorkLeadCommander) New(inputMessage *tgbotapi.Message) {
 	parsedData := createInputData{}
 	err := json.Unmarshal([]byte(inputMessage.CommandArguments()), &parsedData)
 	if err != nil || !parsedData.valid() {
-		log.Printf("Work.LeadCommander.Create: "+
+		log.Printf("WorkLeadCommander.Create: "+
 			"error reading json data for type createInputData from "+
 			"input string %v - %v", inputMessage.CommandArguments(), err)
 		c.sendMsg(inputMessage.Chat.ID, `Command format: /new__work__lead {"fName": "fName", "lName": "lName", "prj": "project"}`)
@@ -36,7 +36,7 @@ func (c *LeadCommander) New(inputMessage *tgbotapi.Message) {
 	})
 
 	if err != nil {
-		log.Printf("Work.LeadCommander.Create: %v", err)
+		log.Printf("WorkLeadCommander.Create: %v", err)
 		c.sendMsg(inputMessage.Chat.ID, fmt.Sprintf(`Error creating lead: %v`, err))
 		return
 	}

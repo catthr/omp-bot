@@ -24,7 +24,7 @@ func NewWorkCommander(
 	return &WorkCommander{
 		bot: bot,
 		// subdomainCommander
-		leadCommander: lead.NewLeadCommander(bot),
+		leadCommander: lead.NewWorkLeadCommander(bot),
 	}
 }
 
